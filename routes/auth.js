@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const router = express.Router();
 
-// JWT Secret (put this in your .env file)
+ 
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key-here";
 
 // Register Route - FIXED VERSION
@@ -158,3 +158,5 @@ router.get("/me", async (req, res) => {
 });
 
 module.exports = router;
+
+ 
