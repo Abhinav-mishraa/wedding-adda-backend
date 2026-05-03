@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config(); // Load .env
 
-const feedback = require('./routes/feedback');
+// const feedback = require('./routes/feedback');
  
  
 
@@ -29,6 +29,9 @@ app.use("/api/auth", authRoutes);
 const venueRoutes = require("./routes/venueRoutes");
 app.use("/api/venues", venueRoutes);
 
+const aiRoutes = require("./routes/aiRoutes");
+app.use("/api/ai", aiRoutes);
+
 // ✅ Test route
 app.get("/", (req, res) => {
   res.send("Wedding Adda backend is running!");
@@ -41,6 +44,12 @@ mongoose.connect(process.env.MONGO_URI, {
 })
 .then(() => console.log("✅ MongoDB Connected Successfully"))
 .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+
+
+mongoose.connection.on("connected", () => {
+  console.log("🔥 DB CONNECTED");
+});
+
 
 // ✅ Start server
 app.listen(PORT, () => {

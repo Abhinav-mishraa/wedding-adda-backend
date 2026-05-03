@@ -4,13 +4,13 @@ const mongoose = require('mongoose');
 
 const venueSchema = new mongoose.Schema({
     name: { type: String, required: true, trim: true },
-    description: { type: String },        // optional
+    description: { type: String },         
     location: { type: String, required: true },  
-    capacity: { type: Number },           // optional
+    capacity: { type: Number },            
     price: { type: Number, required: true },
-    phone: { type: String },              // optional
-    mapUrl: { type: String },             // optional
-    imageUrl: { type: String },           // single image URL
+    phone: { type: String },               
+    mapUrl: { type: String },              
+    imageUrl: { type: String },            
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // from auth middleware
     isActive: { type: Boolean, default: true }
 }, { timestamps: true });
